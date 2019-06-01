@@ -41,7 +41,7 @@
       become_method: sudo
       ignore_errors: yes
 
-    - name: Restart httpd
+    - name: Start httpd
       systemd:
         name: httpd
         state: started
