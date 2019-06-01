@@ -1,9 +1,6 @@
 ---
 - name: Installs wordpress
-  hosts: 
-    54.86.75.113:
-    34.238.84.109:
-    75.101.238.244:
+  hosts: web
   become: yes
   become_method: sudo
   gather_facts: no
