@@ -1,6 +1,6 @@
 ---
 - name: Creates ec2 instances
-  hosts: 
+  hosts: localhosts
   tasks:
     - name: Create instances
       ec2:
