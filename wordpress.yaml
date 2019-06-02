@@ -7,7 +7,7 @@
     - name: Install necessary packages
       package:
         name: "{{item}}"
-        state: absent
+        state: latest
       with_items:
         - wget 
         - unzip
