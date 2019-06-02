@@ -26,6 +26,10 @@
       shell: "sudo yum-config-manager --enable remi-php70" 
     - name: update httpd PHP
       shell: "sudo yum update httpd php php-mysql mysql -y"
+    - name: restart httpd
+      shell: "sudo service httpd restart"
+    - name: httpd enable
+      shell: "sudo chkconfig httpd on"
 
     - name: Download wordpress package
       get_url:
