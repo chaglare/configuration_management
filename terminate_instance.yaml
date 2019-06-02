@@ -1,5 +1,12 @@
 ---
 - name: Terminate Instances
+  vars_prompt:
+    - name: ID
+      prompt: "Instance ID to terminate?"
+      private: no
+    - name: REGION
+      prompt: "Region of the instance"
+      private: no
   hosts: localhost
   tasks:
     - name: Terminate instances
