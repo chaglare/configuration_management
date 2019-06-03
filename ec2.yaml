@@ -4,7 +4,8 @@
   tasks:
     - name: Create instances
       ec2:
-        key_name: terraform
+        key_name: user_ANSIBLE_TOWER
+        group: Ansible Tower
         instance_type: t2.micro
         image: ami-0b3655835197107a9
         count: 3
