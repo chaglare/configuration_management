@@ -7,7 +7,7 @@
         key_name: user_ANSIBLE_TOWER
         group: Ansible Tower
         instance_type: t2.micro
-        image: ami-0b3655835197107a9
+        image: ami-0f283b180b89f6431
         count: 3
         vpc_subnet_id: subnet-699fd047
         region: us-east-2
