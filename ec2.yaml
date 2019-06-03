@@ -9,4 +9,4 @@
         image: ami-0b3655835197107a9
         count: 3
         vpc_subnet_id: subnet-699fd047
-        region: us-east-1
+        region: us-east-2
