@@ -4,8 +4,7 @@
   tasks:
     - name: Create instances
       ec2:
-        key_name: user_ANSIBLE_TOWER
-        group: Ansible Tower
+        key_name: user_ANSIBLE_TOWER      
         instance_type: t2.micro
         image: ami-0f283b180b89f6431
         count: 3
