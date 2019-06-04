@@ -1,5 +1,5 @@
 ---
-  - hosts: localhost
+  - hosts: web
     tasks:
       - name: update kernel to latest
         when: ansible distribution == "CentOS" and ansible_distrubution_major_version == "7""
@@ -8,6 +8,6 @@
           state: latest
         become: yes
         become_method: sudo
-      #- name: restart the system
-      # reboot:
+      - name: restart the system
+        reboot:
 
