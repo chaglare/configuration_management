@@ -9,5 +9,12 @@
         image: ami-0f2b4fc905b0bd1f1
         count: 3
         vpc_subnet_id: subnet-b22b54c8
-        region: us-east-2ls
-        
+        region: us-east-2
+        wait: yes
+        assign_public_ip: yes
+        user_data:
+                  #!/bin/sh
+                  sudo yum install httpd php70 -y
+                  service httpd start
+                  chkconfig httpd on
+                  
