@@ -1,0 +1,82 @@
+--- #sudo pip install boto
+- name: Creates ec2 instances
+  hosts: localhost
+  tasks:
+    - name: Creates CentOS7 instance
+      ec2:
+        key_name: user_ANSIBLE_TOWER      
+        instance_type: t2.micro
+        image: ami-0f2b4fc905b0bd1f1
+        count: 1
+        vpc_subnet_id: subnet-b22b54c8
+        region: us-east-2
+        instance_tags:
+          Name: CentOS7
+        wait: yes
+        assign_public_ip: yes
+    - name: update kernel to latest
+      when: ansible distribution == "CentOS" #and ansible_distrubution_major_version == "7""
+      package:
+        name: kernel
+        state: latest
+      become: yes
+      become_method: sudo
+    - name: restart the system
+      reboot:
+
+
+
+
+    - name: Creates Debian instance
+      ec2:
+        key_name: user_ANSIBLE_TOWER      
+        instance_type: t2.micro
+        image: ami-067e80109aff3e2c2
+        count: 1
+        vpc_subnet_id: subnet-b22b54c8
+        region: us-east-2
+        instance_tags:
+          name: DEBIAN_GNU
+        wait: yes
+        assign_public_ip: yes
+        user_data:
+                  #!/bin/sh
+                  sudo apt-get install python -y
+                  sudo pip install boto
+    - name: update kernel to latest
+      when: ansible distribution == "Debian" #and ansible_distrubution_major_version == "7""
+      package:
+        name: kernel
+        state: latest
+      become: yes
+      become_method: sudo
+    - name: restart the system
+      reboot:
+
+
+    - name: Creates Ubuntu instance
+      ec2:
+        key_name: user_ANSIBLE_TOWER      
+        instance_type: t2.micro
+        image: ami-067e80109aff3e2c2
+        count: 1
+        vpc_subnet_id: subnet-b22b54c8
+        region: us-east-2
+        instance_tags:
+          name: UBUNTU
+        wait: yes
+        assign_public_ip: yes
+        user_data:
+                  #!/bin/sh
+                  sudo apt-get install python -y
+                  sudo pip install boto
+    - name: update kernel to latest
+      when: ansible distribution == "Ubuntu" #and ansible_distrubution_major_version == "7""
+      package:
+        name: kernel
+        state: latest
+      become: yes
+      become_method: sudo
+    - name: restart the system
+      reboot:
+        

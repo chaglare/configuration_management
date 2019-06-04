@@ -1,4 +1,0 @@
----
-- name: Lunch Centos7
-  hosts: localhost
-  task
