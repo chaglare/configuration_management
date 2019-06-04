@@ -9,5 +9,6 @@
         become: yes
         become_method: sudo
       - name: restart the system
+        when: ansible distribution == "CentOS"
         reboot:
 
