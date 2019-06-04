@@ -14,17 +14,6 @@
           Name: CentOS7
         wait: yes
         assign_public_ip: yes
-    - name: update kernel to latest
-      when: ansible distribution == "CentOS" #and ansible_distrubution_major_version == "7""
-      package:
-        name: kernel
-        state: latest
-      become: yes
-      become_method: sudo
-    - name: restart the system
-      reboot:
-
-
 
 
     - name: Creates Debian instance
@@ -43,15 +32,6 @@
                   #!/bin/sh
                   sudo apt-get install python -y
                   sudo pip install boto
-    - name: update kernel to latest
-      when: ansible distribution == "Debian" #and ansible_distrubution_major_version == "7""
-      package:
-        name: kernel
-        state: latest
-      become: yes
-      become_method: sudo
-    - name: restart the system
-      reboot:
 
 
     - name: Creates Ubuntu instance
@@ -70,13 +50,3 @@
                   #!/bin/sh
                   sudo apt-get install python -y
                   sudo pip install boto
-    - name: update kernel to latest
-      when: ansible distribution == "Ubuntu" #and ansible_distrubution_major_version == "7""
-      package:
-        name: kernel
-        state: latest
-      become: yes
-      become_method: sudo
-    - name: restart the system
-      reboot:
-        
