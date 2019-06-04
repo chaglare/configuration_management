@@ -25,7 +25,7 @@
         vpc_subnet_id: subnet-b22b54c8
         region: us-east-2
         instance_tags:
-          name: DEBIAN_GNU
+          Name: DEBIAN_GNU
         wait: yes
         assign_public_ip: yes
         user_data:
@@ -43,7 +43,7 @@
         vpc_subnet_id: subnet-b22b54c8
         region: us-east-2
         instance_tags:
-          name: UBUNTU
+          Name: UBUNTU
         wait: yes
         assign_public_ip: yes
         user_data:
