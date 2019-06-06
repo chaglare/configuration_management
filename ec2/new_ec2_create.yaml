@@ -37,13 +37,14 @@
           Name: Debian_-{{ item }}
         assign_public_ip: yes
         wait: yes
+        user_data:
+          #!/bin/sh
+          sudo apt-get install python -y
+          sudo pip install boto
       loop: "{{ range(1, 3 + 1)| list }}"
       
       
-      user_data:
-                  #!/bin/sh
-                  sudo apt-get install python -y
-                  sudo pip install boto
+      
 
 
   # vars_files:
@@ -60,10 +61,11 @@
           Name: CentOS_6_-{{ item }}
         assign_public_ip: yes
         wait: yes
+        user_data:
+          #!/bin/sh
+          sudo apt-get install python -y
+          sudo pip install boto
       loop: "{{ range(1, 2 + 1)| list }}"
       
       
-      user_data:
-                  #!/bin/sh
-                  sudo apt-get install python -y
-                  sudo pip install boto
+      
