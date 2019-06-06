@@ -3,10 +3,12 @@
   hosts: localhost
   vars_files:
     - ec2_vars_CentOS_7
+    - ec2_vars_Debian_GNU
+    - ec2_vars_CentOS_6
   tasks:
     - name: Creates CentOS7 instance
       ec2:
-        key_name: "{{key_name}}"      
+        key_name: "{{ec2_vars_CentOS_7.key_name}}"      
         instance_type: "{{instance_type}}"
         image: "{{image}}"
         count: "{{count}}"
@@ -19,9 +21,8 @@
       assign_public_ip: yes
 
 
-  vars_files:
-    - ec2_vars_Debian_GNU
-  tasks:
+  # vars_files:
+  #   - ec2_vars_Debian_GNU
     - name: Creates Debian instance
       ec2:
         key_name: "{{key_name}}"      
@@ -41,9 +42,8 @@
                   sudo pip install boto
 
 
-  vars_files:
-    - ec2_vars_CentOS_6
-  tasks:
+  # vars_files:
+  #   - ec2_vars_CentOS_6
     - name: Creates CentOS_6 instance
       ec2:
         key_name: "{{key_name}}"      
