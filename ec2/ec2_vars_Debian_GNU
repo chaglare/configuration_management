@@ -1,6 +1,7 @@
+# This is a variable file for Debian_GNU
 key_name: "user_ANSIBLE_TOWER"
 instance_type: "t2.micro"
-image: "ami-0f2b4fc905b0bd1f1"
-count: "3"
+image: "ami-067e80109aff3e2c2"
+count: "1"
 vpc_subnet_id: "subnet-b22b54c8"
 region: "us-east-2" 
