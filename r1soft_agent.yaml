@@ -15,17 +15,14 @@
         package:
           name: serverbackup-enterprise-agent
           state: latest
-
-
-      - name: start agent
-        systemd:
-          name: sbm-agent
-          state: restarted
-
+        notify: R1SOFT_INSTALLED_ON_CENTOS_7
 
       - name: Get key
         shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" 
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+
+
 
       # This line for CentOS 6
     - block:        
@@ -38,17 +35,14 @@
         package:
           name: serverbackup-enterprise-agent
           state: latest
-
-
-      - name: start agent
-        service:
-          name: cdp-agent
-          state: restarted
+        notify: R1SOFT_INSTALLED_ON_CENTOS_6
+ 
 
 
       - name: Get key
         shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
+
 
 
       # This line for CentOS 8
@@ -62,12 +56,8 @@
         package:
           name: serverbackup-enterprise-agent
           state: latest
+        notify: R1SOFT_INSTALLED_ON_CENTOS_8
 
-
-      - name: start agent
-        systemd:
-          name: sbm-agent
-          state: restarted
 
 
       - name: Get key
@@ -97,6 +87,21 @@
       - name: Get key
         shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "28"
+
+
+  handlers:
+    - name: R1SOFT_INSTALLED_ON_CENTOS_7
+      systemd:
+         name: sbm-agent
+         state: restarted
+    - name: R1SOFT_INSTALLED_ON_CENTOS_6
+      service:
+         name: cdp-agent
+         state: restarted
+    - name: R1SOFT_INSTALLED_ON_CENTOS_8
+      systemd:
+         name: sbm-agent
+         state: restarted
 
 
  
