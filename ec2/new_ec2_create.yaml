@@ -20,7 +20,7 @@
 
 
   vars_files:
-    - ec2_vars_Debian
+    - ec2_vars_Debian_GNU
   tasks:
     - name: Creates Debian instance
       ec2:
