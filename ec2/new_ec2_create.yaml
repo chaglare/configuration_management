@@ -1,34 +1,41 @@
 --- #sudo pip install boto
 - name: Creates ec2 instances
   hosts: localhost
+  vars_files:
+    - ec2_vars_CentOS_7
   tasks:
     - name: Creates CentOS7 instance
       ec2:
-        key_name: user_ANSIBLE_TOWER      
-        instance_type: t2.micro
-        image: ami-0f2b4fc905b0bd1f1
-        count: 1
-        vpc_subnet_id: subnet-b22b54c8
-        region: us-east-2
+        key_name: "{{key_name}}"      
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}"
         instance_tags:
-          Name: CentOS7
-        wait: yes
-        assign_public_ip: yes
+          Name: Centos_7_-{{ item }}
+      loop: "{{ range(1, 5 + 1)| list }}"
+      wait: yes
+      assign_public_ip: yes
 
 
+  vars_files:
+    - ec2_vars_Debian
+  tasks:
     - name: Creates Debian instance
       ec2:
-        key_name: user_ANSIBLE_TOWER      
-        instance_type: t2.micro
-        image: ami-067e80109aff3e2c2
-        count: 1
-        vpc_subnet_id: subnet-b22b54c8
-        region: us-east-2
+        key_name: "{{key_name}}"      
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}"
         instance_tags:
-          Name: DEBIAN_GNU
-        wait: yes
-        assign_public_ip: yes
-        user_data:
+          Name: Centos_7_-{{ item }}
+      loop: "{{ range(1, 5 + 1)| list }}"
+      wait: yes
+      assign_public_ip: yes
+      user_data:
                   #!/bin/sh
                   sudo apt-get install python -y
                   sudo pip install boto
