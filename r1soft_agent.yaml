@@ -4,8 +4,7 @@
   become: yes
   become_method: sudo
   tasks:
-    - block:
-      when: ansible_distribution == "CentOS"    
+    - block:        
       - name: Create Repository
         copy:
           src: r1soft.repo
@@ -25,3 +24,4 @@
 
       - name: Get key
         shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+      when: ansible_distribution == "CentOS"  
