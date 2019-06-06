@@ -2,20 +2,18 @@
 - name: Creates ec2 instances
   hosts: localhost
   vars_files:
-    - ec2_vars_CentOS_7
-    - ec2_vars_Debian_GNU
-    - ec2_vars_CentOS_6
+    - ec2_vars
   tasks:
     - name: Creates CentOS7 instance
       ec2:
-        key_name: "{{ec2_vars_CentOS_7.key_name}}"      
+        key_name: "{{key_name}}"      
         instance_type: "{{instance_type}}"
-        image: "{{image}}"
+        image: "{{centos7_image}}"
         count: "{{count}}"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         region: "{{region}}"
         instance_tags:
-          Name: Centos_7_-{{ item }}
+          Name: Centos_7-{{ item }}
         assign_public_ip: yes
         wait: yes
       loop: "{{ range(1, 5 + 1)| list }}"
@@ -25,16 +23,16 @@
 
   # vars_files:
   #   - ec2_vars_Debian_GNU
-    - name: Creates Debian instance
+    - name: Creates Fedora instance
       ec2:
         key_name: "{{key_name}}"      
         instance_type: "{{instance_type}}"
-        image: "{{image}}"
+        image: "{{fedora_image}}"
         count: "{{count}}"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         region: "{{region}}"
         instance_tags:
-          Name: Debian_-{{ item }}
+          Name: Fedora-{{ item }}
         assign_public_ip: yes
         wait: yes
         user_data:
@@ -53,12 +51,12 @@
       ec2:
         key_name: "{{key_name}}"      
         instance_type: "{{instance_type}}"
-        image: "{{image}}"
+        image: "{{centos6_image}}"
         count: "{{count}}"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         region: "{{region}}"
         instance_tags:
-          Name: CentOS_6_-{{ item }}
+          Name: CentOS_6-{{ item }}
         assign_public_ip: yes
         wait: yes
         user_data:
