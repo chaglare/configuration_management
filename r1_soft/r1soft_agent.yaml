@@ -18,7 +18,7 @@
         notify: R1SOFT_INSTALLED_ON_CENTOS_7
 
       - name: Get key
-        shell: "r1soft-setup --get-key 35.237.56.40"
+        shell: "r1soft-setup --get-key http://35.237.56.40"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
 
