@@ -1,13 +1,11 @@
 [target]
-18.222.220.133
-3.15.40.49
-3.17.142.215
-18.220.196.80
-18.223.102.134
-3.14.27.112
-3.19.62.81
-18.191.179.246 ansible_user=fedora
-18.217.113.255 ansible_user=fedora
-3.16.27.225 ansible_user=fedora
-35.237.56.40
-18.218.187.233
+13.59.154.113 ansible_user=centos
+3.17.66.192 ansible_user=centos
+52.15.65.58 ansible_user=centos
+3.19.59.127 ansible_user=centos
+3.17.191.70 ansible_user=centos
+13.58.42.235 ansible_user=centos
+52.15.113.175 ansible_user=centos
+18.220.128.95 ansible_user=fedora
+18.188.187.178 ansible_user=fedora
+18.222.137.241 ansible_user=fedora
