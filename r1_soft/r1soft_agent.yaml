@@ -1,6 +1,6 @@
 ---
 - name: Install r1soft agent
-  hosts: /home/centos/configuration_management/inventory
+  hosts: target
   become: yes
   become_method: sudo
   tasks:
