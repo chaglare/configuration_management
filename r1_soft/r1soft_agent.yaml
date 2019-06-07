@@ -14,11 +14,11 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: latest
+          state: absent
         notify: R1SOFT_INSTALLED_ON_CENTOS_7
 
       - name: Get key
-        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        shell: "r1soft-setup --get-key 35.237.56.40"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
 
@@ -34,13 +34,13 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: latest
+          state: absent
         notify: R1SOFT_INSTALLED_ON_CENTOS_6
  
 
 
       - name: Get key
-        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        shell: "r1soft-setup --get-key 35.237.56.40"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
 
 
@@ -75,7 +75,7 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: latest
+          state: absent
 
 
       - name: start agent
@@ -86,8 +86,8 @@
 
 
       - name: Get key
-        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "28"
+        shell: "r1soft-setup --get-key 35.237.56.40"
+      when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "29"
 
 
   handlers:
