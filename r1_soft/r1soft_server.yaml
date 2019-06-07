@@ -17,6 +17,9 @@
           state: latest
         notify: R1SOFT_INSTALLED_ON_CENTOS_7
 
+    - name: Restart r1soft server
+      shell: "/etc/init.d/cdp-server restart"
+
   handlers:
     - name: R1SOFT_INSTALLED_ON_CENTOS_7
       systemd:
