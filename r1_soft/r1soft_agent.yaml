@@ -14,7 +14,7 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: absent
+          state: latest
         notify: R1SOFT_INSTALLED_ON_CENTOS_7
 
       - name: Get key
@@ -34,7 +34,7 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: absent
+          state: latest
         notify: R1SOFT_INSTALLED_ON_CENTOS_6
  
 
@@ -75,7 +75,7 @@
       - name: Install r1soft agent
         package:
           name: serverbackup-enterprise-agent
-          state: absent
+          state: latest
 
 
       - name: start agent
