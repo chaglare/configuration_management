@@ -4,8 +4,8 @@
   become: yes
   become_method: sudo
   tasks:
-    # This line for CentOS 7
-    - block:        
+    
+    - block: # This line for CentOS 7        
       - name: Create Repository
         copy:
           src: r1soft.repo
@@ -24,8 +24,8 @@
 
 
 
-      # This line for CentOS 6
-    - block:        
+     
+    - block:  # This line for CentOS 6
       - name: Create Repository
         copy:
           src: r1soft.repo
@@ -79,7 +79,7 @@
       
       - name: Install r1soft agent
         package:
-          name: serverbackup-enterprise-agent
+          name: cdp-agent
           state: latest
         notify: R1SOFT_INSTALLED_ON_FEDORA_29
 
