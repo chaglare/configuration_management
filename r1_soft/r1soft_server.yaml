@@ -1,6 +1,6 @@
 ---
 - name: Install r1soft server
-  hosts: 35.237.56.40 
+  hosts: backup_server 
   become: yes
   become_method: sudo
   tasks:
@@ -20,5 +20,5 @@
   handlers:
     - name: R1SOFT_INSTALLED_ON_CENTOS_7
       systemd:
-         name: sbm-agent
+         name: sbm-server
          state: restarted
