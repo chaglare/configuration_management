@@ -40,7 +40,7 @@
 
 
       - name: Get key
-        shell: "r1soft-setup --get-key http://35.237.56.40"
+        shell: "r1soft-setup --get-key http://35.237.56.40:80"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
 
 
@@ -98,7 +98,7 @@
   handlers:
     - name: R1SOFT_INSTALLED_ON_CENTOS_7
       systemd:
-         name: sbm-agent
+         name: cdp-agent
          state: restarted
     - name: R1SOFT_INSTALLED_ON_CENTOS_6
       service:
