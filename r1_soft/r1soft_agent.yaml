@@ -102,7 +102,7 @@
          state: restarted
     - name: R1SOFT_INSTALLED_ON_CENTOS_6
       service:
-         name: cdp-agent
+         name: sbm-agent
          state: restarted
     #- name: R1SOFT_INSTALLED_ON_CENTOS_8
      # systemd:
