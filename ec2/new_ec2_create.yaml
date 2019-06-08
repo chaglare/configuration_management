@@ -6,17 +6,17 @@
   tasks:
     - name: Creates CentOS7 instance
       ec2:
-        key_name: "{{key_name}}"      
+        key_name: "{{key_name}}"      # All these {---} curly bracek values are in ec2_vars
         instance_type: "{{instance_type}}"
         image: "{{centos7_image}}"
         count: "{{count}}"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         region: "{{region}}"
         instance_tags:
-          Name: Centos_7-{{ item }}
+          Name: Centos_7-{{ item }}  # it will name Centos_7-   and given the range specified in below command
         assign_public_ip: yes
         wait: yes
-      loop: "{{ range(1, 5 + 1)| list }}"
+      loop: "{{ range(1, 5 + 1)| list }}"  # it loops 1 to 5 and increases the number 1 by 1
       
       
 
