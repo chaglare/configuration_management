@@ -4,6 +4,10 @@
     become: yes
     become_user: root
     tasks:
+      - set_fact:
+          ansible_facts:
+            pkg_mgr: yum
+
       - name: Create repo on Centos6
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
         shell: rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm
