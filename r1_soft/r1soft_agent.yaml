@@ -8,18 +8,18 @@
     - block: # This line for CentOS 7        
       - name: Create Repository
         copy:
-          src: r1soft.repo
-          dest: /etc/yum.repos.d/r1soft.repo
+          src: r1soft.repo # This is my repo
+          dest: /etc/yum.repos.d/r1soft.repo # It will copy my repo to this destionation. 
 
       - name: Install r1soft agent
         package:
-          name: serverbackup-enterprise-agent
-          state: latest
-        notify: R1SOFT_INSTALLED_ON_CENTOS_7
+          name: serverbackup-enterprise-agent #This is th epackage name
+          state: latest # absent
+        notify: R1SOFT_INSTALLED_ON_CENTOS_7 # notifies handlers if it is installed or not
 
       - name: Get key
-        shell: "r1soft-setup --get-key http://35.237.56.40"
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+        shell: "r1soft-setup --get-key http://35.237.56.40" # next time use shell: "r1soft-setup --get-key http://35.237.56.40:8080"
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" # checks the operation system that
 
 
 
@@ -36,16 +36,15 @@
           name: serverbackup-enterprise-agent
           state: latest
         notify: R1SOFT_INSTALLED_ON_CENTOS_6
- 
 
-
+    
       - name: Get key
         shell: "r1soft-setup --get-key http://35.237.56.40:80"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
 
 
 
-      # This line for CentOS 8
+     # This line for CentOS 8
     #- block:        
      # - name: Create Repository
       #  copy:
@@ -62,20 +61,21 @@
 
       #- name: Get key
        # shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-      #when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8" 
+      #when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"  
 
 
       # This line for Fedora
-    - block:        
+    
+    - block:   # This line for Fedora       
       - name: Create Repository
-        copy:
-          src: r1soft.repo
+        copt.repoy:
+          src: r1sof
           dest: /etc/yum.repos.d/r1soft.repo
 
-      # - name: Install r1soft agent
-      #   package:
-      #     name: serverbackup-enterprise-agent
-      #     state: latest
+      - name: Install r1soft agent
+        package:
+           name: serverbackup-enterprise-agent
+           state: latest
       
       - name: Install r1soft agent
         package:
@@ -83,11 +83,11 @@
           state: latest
         notify: R1SOFT_INSTALLED_ON_FEDORA_29
 
-      # - name: start agent
-      #   systemd:
-      #     name: sbm-agent
-      #     state: restarted
-      #   notify: R1SOFT_INSTALLED_ON_FEDORA
+     # - name: start agent
+        systemd:
+           name: sbm-agent
+           state: restarted
+        notify: R1SOFT_INSTALLED_ON_FEDORA
 
 
       - name: Get key
