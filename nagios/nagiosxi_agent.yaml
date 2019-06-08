@@ -45,6 +45,27 @@
 
 
 
+      - name: Create repo on Amazon
+        when: ansible_distribution == "Amazon"
+        shell: rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm
+
+      - name: Install ncpa on Centos 6
+        when: ansible_distribution == "Amazon"
+        package:
+            name: ncpa
+            state: present
+        notify: NCPA_CENTOS_6
+
+      - name: Change the code inside ncpa.cfg
+        when: ansible_distribution == "Amazon"
+        lineinfile: 
+            path: /usr/local/ncpa/etc/ncpa.cfg
+            regexp: "community_string = mytoken"
+            line: "community_string = STRONGPASSWORD"
+
+
+
+
     handlers:
       - name: NCPA_CENTOS_6
         service:
@@ -52,6 +73,11 @@
           state: restarted
 
       - name: NCPA_CENTOS_7
+        service:
+          name: ncpa_listener
+          state: restarted
+
+      - name: NCPA_Amazon
         service:
           name: ncpa_listener
           state: restarted
