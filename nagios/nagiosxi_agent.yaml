@@ -67,8 +67,8 @@
 ##########################################################
       - name: Install ncpa on amazon 
         when: ansible_distribution == "Amazon"
-        package:
-            name: telnet
+        yum:
+            name: nmap
             state: present
         notify: NCPA_Amazon
 ############################################################
