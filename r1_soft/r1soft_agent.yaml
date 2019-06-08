@@ -98,11 +98,11 @@
   handlers:
     - name: R1SOFT_INSTALLED_ON_CENTOS_7
       systemd:
-         name: cdp-agent
+         name: sbm-agent
          state: restarted
     - name: R1SOFT_INSTALLED_ON_CENTOS_6
       service:
-         name: sbm-agent
+         name: cdp-agent
          state: restarted
     #- name: R1SOFT_INSTALLED_ON_CENTOS_8
      # systemd:
