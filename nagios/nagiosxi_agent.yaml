@@ -49,12 +49,12 @@
         when: ansible_distribution == "Amazon"
         shell: rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm
 
-      - name: Install ncpa on Centos 6
+      - name: Install ncpa on Amazon
         when: ansible_distribution == "Amazon"
         package:
             name: ncpa
             state: present
-        notify: NCPA_CENTOS_6
+        notify: NCPA_Amazon
 
       - name: Change the code inside ncpa.cfg
         when: ansible_distribution == "Amazon"
