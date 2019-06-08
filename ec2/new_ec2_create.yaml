@@ -22,7 +22,7 @@
 
 
   # vars_files:
-  #   - ec2_vars_Debian_GNU
+  #   - ec2_vars_Fedora_GNU
     - name: Creates Fedora instance
       ec2:
         key_name: "{{key_name}}"      
