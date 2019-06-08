@@ -67,7 +67,7 @@
 ##########################################################
       - name: Install ncpa on amazon 
         when: ansible_distribution == "Amazon"
-        yum:
+        package:
             name: nmap
             state: present
         notify: NCPA_Amazon
