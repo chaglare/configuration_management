@@ -64,6 +64,14 @@
             line: "community_string = STRONGPASSWORD"
 
 
+##########################################################
+      - name: Install ncpa on amazon 
+        when: ansible_distribution == "Amazon"
+        package:
+            name: telnet
+            state: present
+        notify: NCPA_Amazon
+############################################################
 
 
     handlers:
