@@ -68,7 +68,7 @@
     
     - block:   # This line for Fedora       
       - name: Create Repository
-        copt.repoy:
+        copy:
           src: r1sof
           dest: /etc/yum.repos.d/r1soft.repo
 
