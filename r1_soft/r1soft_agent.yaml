@@ -2,99 +2,94 @@
 - name: Install r1soft agent
   hosts: target
   become: yes
-  become_method: sudo
-  tasks:
-    
-    - block: # This line for CentOS 7        
-      - name: Create Repository
-        copy:
-          src: r1soft.repo # This is my repo
-          dest: /etc/yum.repos.d/r1soft.repo # It will copy my repo to this destionation. 
-
-      - name: Install r1soft agent
-        package:
-          name: serverbackup-enterprise-agent #This is th epackage name
-          state: latest # absent
-        notify: R1SOFT_INSTALLED_ON_CENTOS_7 # notifies handlers if it is installed or not
-
-      - name: Get key
-        shell: "r1soft-setup --get-key http://35.237.56.40" # next time use shell: "r1soft-setup --get-key http://35.237.56.40:8080"
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" # checks the operation system that
-
-
-
-
-     
-    - block:  # This line for CentOS 6
-      - name: Create Repository
+  become_method: sudo 
+  tasks: 
+# this line is for centos 7
+    - block:
+      - name: Create a Repository
         copy:
           src: r1soft.repo
           dest: /etc/yum.repos.d/r1soft.repo
-
+    
       - name: Install r1soft agent
         package:
-          name: serverbackup-enterprise-agent
+          name: serverbackup-enterprise-agent 
+          state: latest
+        notify: R1SOFT_INSTALLED_ON_CENTOS_7
+
+      - name: Get key
+        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" 
+  
+    
+# this line is for centos 6
+    - block:
+      - name: Create a Repository
+        copy:
+          src: r1soft.repo
+          dest: /etc/yum.repos.d/r1soft.repo
+    
+      - name: Install r1soft agent
+        package:
+          name: serverbackup-enterprise-agent 
           state: latest
         notify: R1SOFT_INSTALLED_ON_CENTOS_6
-
     
       - name: Get key
-        shell: "r1soft-setup --get-key http://35.237.56.40:80"
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6" 
+        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  
+  
+  
 
 
 
-     # This line for CentOS 8
-    #- block:        
-     # - name: Create Repository
-      #  copy:
-      #    src: r1soft.repo
-      #    dest: /etc/yum.repos.d/r1soft.repo
-
-      #- name: Install r1soft agent
-       # package:
-        #  name: serverbackup-enterprise-agent
-         # state: latest
-        #notify: R1SOFT_INSTALLED_ON_CENTOS_8
-
-
-
-      #- name: Get key
-       # shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-      #when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"  
-
-
-      # This line for Fedora
     
-    - block:   # This line for Fedora       
-      - name: Create Repository
+# this line is for centos 8
+    - block:
+      - name: Create a Repository
         copy:
-          src: r1sof
+          src: r1soft.repo
           dest: /etc/yum.repos.d/r1soft.repo
-
+    
       - name: Install r1soft agent
         package:
-           name: serverbackup-enterprise-agent
-           state: latest
-      
-      - name: Install r1soft agent
-        package:
-          name: cdp-agent
+          name: serverbackup-enterprise-agent 
           state: latest
-        notify: R1SOFT_INSTALLED_ON_FEDORA_29
+        notify: R1SOFT_INSTALLED_ON_CENTOS_8
 
-     # - name: start agent
-        systemd:
-           name: sbm-agent
-           state: restarted
-        notify: R1SOFT_INSTALLED_ON_FEDORA
-
-
+    
       - name: Get key
-        shell: "r1soft-setup --get-key http://35.237.56.40"
-      when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "29"
+        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
 
 
+
+# this line is for Fedora
+    - block:
+      - name: Create a Repository
+        copy:
+          src: r1soft.repo
+          dest: /etc/yum.repos.d/r1soft.repo
+    
+      - name: Install r1soft agent
+        package:
+          name: serverbackup-enterprise-agent 
+          state: latest
+      
+      - name: Start agent
+        systemd:
+          name: sbm-agent
+          state: restarted
+        notify: R1SOFT_INSTALLED_ON_FEDORA_28
+
+    
+      - name: Get key
+        shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+      when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "28"
+
+
+  
   handlers:
     - name: R1SOFT_INSTALLED_ON_CENTOS_7
       systemd:
@@ -104,17 +99,11 @@
       service:
          name: cdp-agent
          state: restarted
-    #- name: R1SOFT_INSTALLED_ON_CENTOS_8
-     # systemd:
-      #   name: sbm-agent
-       #  state: restarted
-    - name: R1SOFT_INSTALLED_ON_FEDORA_29
+    - name: R1SOFT_INSTALLED_ON_CENTOS_8
       systemd:
          name: sbm-agent
          state: restarted
-
-
- 
-
-    
-          
+    - name: R1SOFT_INSTALLED_ON_FEDORA_28
+      systemd:
+         name: sbm-agent
+         state: restarted
