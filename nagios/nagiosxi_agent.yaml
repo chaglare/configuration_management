@@ -51,10 +51,8 @@
 
       - name: Create repo on Amazon
         when: ansible_distribution == "Amazon"
-        yum: 
-          name: rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm
-          state: present
-
+        shell: "rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm"
+          
       - name: Install ncpa on Amazon
         when: ansible_distribution == "Amazon"
         package:
