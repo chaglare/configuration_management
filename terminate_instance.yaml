@@ -4,6 +4,6 @@
   tasks:
     - name: Terminate instances
       ec2:
-        instance_ids: "{{ID}}"
-        state: absent #stopped  #started
-        region: "{{REGION}}"
+        instance_ids: "{{instance_ids}}"
+        state: "{{state}}" #stopped  #started
+        region: "{{region}}"
