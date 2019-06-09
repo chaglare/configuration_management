@@ -75,7 +75,7 @@
           state: restarted
 
       - name: NCPA_CENTOS_7
-        service:
+        systemd:
           name: ncpa_listener
           state: restarted
 
