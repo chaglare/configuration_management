@@ -4,10 +4,6 @@
     become: yes
     become_user: root
     tasks:
-      - set_fact:
-          ansible_facts:
-            pkg_mgr: yum
-
       - name: Create repo on Centos6
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
         yum: 
@@ -17,16 +13,16 @@
       - name: Install ncpa on Centos 6
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
         package:
-            name: ncpa
-            state: present
+          name: ncpa
+          state: present
         notify: NCPA_CENTOS_6
 
       - name: Change the code inside ncpa.cfg
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
         lineinfile: 
-            path: /usr/local/ncpa/etc/ncpa.cfg
-            regexp: "community_string = mytoken"
-            line: "community_string = STRONGPASSWORD"
+          path: /usr/local/ncpa/etc/ncpa.cfg
+          regexp: "community_string = mytoken"
+          line: "community_string = STRONGPASSWORD"
 
 
 
@@ -40,16 +36,16 @@
       - name: Install ncpa on Centos 7
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
         package:
-            name: ncpa
-            state: present
+          name: ncpa
+          state: present
         notify: NCPA_CENTOS_6
 
       - name: Change the code inside ncpa.cfg
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
         lineinfile: 
-            path: /usr/local/ncpa/etc/ncpa.cfg
-            regexp: "community_string = mytoken"
-            line: "community_string = STRONGPASSWORD"
+          path: /usr/local/ncpa/etc/ncpa.cfg
+          regexp: "community_string = mytoken"
+          line: "community_string = STRONGPASSWORD"
 
 
 
@@ -62,24 +58,17 @@
       - name: Install ncpa on Amazon
         when: ansible_distribution == "Amazon"
         package:
-            name: ncpa
-            state: present
+          name: ncpa
+          state: present
         notify: NCPA_Amazon
 
       - name: Change the code inside ncpa.cfg
         when: ansible_distribution == "Amazon"
         lineinfile: 
-            path: /usr/local/ncpa/etc/ncpa.cfg
-            regexp: "community_string = mytoken"
-            line: "community_string = STRONGPASSWORD"
+          path: /usr/local/ncpa/etc/ncpa.cfg
+          regexp: "community_string = mytoken"
+          line: "community_string = STRONGPASSWORD"
 
-
-##########################################################
-      - name: Install ncpa on amazon 
-        package:
-            name: nmap
-            state: present
-############################################################
 
 
     handlers:
