@@ -6,5 +6,5 @@
   tasks:
     - name: Add 1 user
       user:
-        name: "{{user}}"
+        user: "{{user}}"
         state: present
