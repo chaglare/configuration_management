@@ -6,6 +6,6 @@
   tasks:
     - name: Remove 1 user
       user:
-        name: "{{user}}"
+        user: "{{user}}"
         state: absent
         remove: yes
