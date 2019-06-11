@@ -7,8 +7,8 @@
         name: "{{name}}"                                              #Give a name to the role   Ex:MyNewRole
         assume_role_policy_document: "{{ lookup('file','roles_vars') }}"
         state: present
-        managed_policy: "{{name}}"
-      #- arn:aws:iam::aws:policy/PowerUserAccess
+        managed_policy:
+          - arn:aws:iam::aws:policy/PowerUserAccess
       #- arn:aws:iam::aws:policy/AdministratorAccess
       #- arn:aws:iam::aws:policy/AmazonEC2FullAccess
       #- arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
