@@ -1,5 +1,5 @@
 ---
-- name: IAM add-role
+- name: IAM Create a role and attach a managed policy called "PowerUserAccess"
   hosts: localhost
   tasks:
     - name: IAM add role
