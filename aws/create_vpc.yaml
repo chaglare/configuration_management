@@ -3,7 +3,7 @@
   hosts: localhost
   tasks:
     - ec2_vpc_net:
-        name: "{{dev}}""
-        state: present
-        cidr_block: 142.31.0.0/16
-        region: us-east-2
+        name: "{{name}}"
+        state: present                 #absent
+        cidr_block: "{{cidr_block}}"
+        region: "{{region}}"
