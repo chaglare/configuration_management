@@ -4,6 +4,6 @@
   tasks:
     - ec2_vpc_net:
         name: "{{name}}"
-        state: present                 #absent
+        state: "{{state}}"               #present      #absent
         cidr_block: "{{cidr_block}}"
         region: "{{region}}"
