@@ -1,0 +1,10 @@
+---
+- name: IAM add-role
+  hosts: localhost
+  tasks:
+    - name: IAM add role
+      iam_role:
+        name: "{{name}}"                                                         #Give name of the role
+        state: present
+        managed_policy:
+          - arn:aws:iam::aws:policy/PowerUserAccess
