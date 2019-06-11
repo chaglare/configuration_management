@@ -1,12 +1,14 @@
-# Basic user creation
-tasks:
-- name: Create new IAM users with API keys
-  iam:
-    iam_type: user
-    name: "{{ item }}"
-    state: present
-    password: "{{ temp_pass }}"
-    access_key_state: create
-  loop:
-    - "{{ item }}"
-    - "{{ item }}"
+---
+- name: User creation
+  hosts: localhost
+  tasks:
+    - name: Create new IAM users with API keys
+      iam:
+        iam_type: user
+        name: "{{ item }}"
+        state: present
+        password: "{{ temp_pass }}"
+        access_key_state: create
+      loop:
+        - "{{ item }}"
+        - "{{ item }}"
