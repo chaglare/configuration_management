@@ -11,3 +11,4 @@
       - arn:aws:iam::aws:policy/PowerUserAccess
       #- arn:aws:iam::aws:policy/AdministratorAccess                       # Uncomment the role that you need or you can add the role you want after / 
       #- arn:aws:iam::aws:policy/AmazonEC2FullAccess
+      #- arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
