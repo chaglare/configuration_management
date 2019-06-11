@@ -6,5 +6,5 @@
       iam:
         iam_type: user
         name: "{{ user_name }}"
-        state: "{{state}}"
-        password: "{{ user_pass }}"
+        state: "{{ state }}"
+        password: "{{ password }}"
