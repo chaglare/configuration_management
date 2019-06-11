@@ -7,7 +7,6 @@
     - name: IAM add role
       iam_role:
         name: "{{name}}"                                              #Give a name to the role   Ex:MyNewRole
-        state: present
         managed_policy: "{{name}}"
       #- arn:aws:iam::aws:policy/PowerUserAccess
       #- arn:aws:iam::aws:policy/AdministratorAccess

@@ -1,7 +1,0 @@
-# This is a variable file for Fedora 29
-key_name: "user_ANSIBLE_TOWER"
-instance_type: "t2.micro"
-image: "ami-002394f4b972f0aeb"
-count: "1"
-vpc_subnet_id: "subnet-e49f38a8"
-region: "us-east-2"
