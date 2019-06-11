@@ -1,10 +1,10 @@
 ---
-- name: User creation
+- name: IAM user add and remove
   hosts: localhost
   tasks:
-    - name: update user with password (console access)
+    - name: IAM user add with password (console access) and remove 
       iam:
         iam_type: user
-        name: "{{ name }}"
-        state: "{{ state }}"
-        password: "{{ password }}"
+        name: "{{ name }}"                    # Type name of the user
+        state: "{{ state }}"                  # present = adds user,  absent = removes user
+        password: "{{ password }}"            # Create user password
