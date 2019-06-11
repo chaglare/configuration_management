@@ -8,7 +8,7 @@
       iam_role:
         name: "{{name}}"                                              #Give a name to the role   Ex:MyNewRole
         state: present
-        policy_name: "{{name}}"
+        managed_policy: "{{name}}"
       #- arn:aws:iam::aws:policy/PowerUserAccess
       #- arn:aws:iam::aws:policy/AdministratorAccess
       #- arn:aws:iam::aws:policy/AmazonEC2FullAccess
