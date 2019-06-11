@@ -1,8 +1,8 @@
 ---
-- name: IAM user add
+- name: IAM user remove
   hosts: localhost
   tasks:
-    - name: IAM user add with password (console access) 
+    - name: IAM user remove
       iam:
         iam_type: user
         name: "{{ name }}"                    # Type name of the user
