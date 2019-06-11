@@ -2,13 +2,9 @@
 - name: User creation
   hosts: localhost
   tasks:
-    - name: Create new IAM users with API keys
+    - name: update user with password (console access)
       iam:
         iam_type: user
-        name: "{{ item }}"
-        state: present
-        password: "{{ temp_pass }}"
-        access_key_state: create
-      loop:
-        - "{{ item }}"
-        - "{{ item }}"
+        name: "{{ user_name }}"
+        state: "{{state}}"
+        password: "{{ user_pass }}"
