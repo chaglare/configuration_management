@@ -7,4 +7,4 @@
     - name: Add 1 group
       group:
         name: "{{group}}"
-        state: present
+        state: "{{present}}"
