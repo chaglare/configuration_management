@@ -6,4 +6,5 @@
         vpc_id: "{{vpc_id}}"                    # Add the VPC ID
         resource_tags: { "Name":"Tag" }         # Change the Tag
         state: present
+        region: "{{region}}"                    # Type region
       register: igw
