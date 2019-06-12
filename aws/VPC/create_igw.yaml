@@ -7,5 +7,5 @@
         state: present
         region: "{{region}}"                    # Add region
         tags: 
-          Name: Testing
+          Name: "{{Name}}"
       register: igw
