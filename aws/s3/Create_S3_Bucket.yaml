@@ -1,5 +1,5 @@
 ---
-- name: Create an s3 bcuket
+- name: Create an s3 bucket
   hosts: localhost 
   tasks:
     - name: Create an s3 bucket
