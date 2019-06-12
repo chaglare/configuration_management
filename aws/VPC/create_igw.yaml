@@ -3,8 +3,8 @@
   tasks:
     - name: Creating igw
       ec2_vpc_igw:
-        vpc_id: "{{vpc_id}}"                    # Add VPC ID
         name: "{{name}}"                        # Type a name for igw
+        vpc_id: "{{vpc_id}}"                    # Add VPC ID
         state: present
         region: "{{region}}"
       register: igw
