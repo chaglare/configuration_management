@@ -7,4 +7,4 @@
         state: present
         region: "{{region}}"
         resource_tags: "{{tags}}"
-      region: "{{region}}"
+      register: igw
