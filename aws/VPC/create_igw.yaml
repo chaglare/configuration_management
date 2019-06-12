@@ -4,7 +4,7 @@
     - name: Creating igw
       ec2_vpc_igw:
         vpc_id: "{{vpc_id}}"                    # Add the VPC ID
-        resource_tags: { "Name":"Tag" }         # Change the Tag
+        resource_tags: { "Name":"{{tags}}" }
         state: present
         region: "{{region}}"                    # Type region
       register: igw
