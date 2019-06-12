@@ -3,7 +3,7 @@
   tasks:
     - name: Creating igw
       ec2_vpc_igw:
-        vpc_id: "{{vpc_id}}"
-        name: "{{name}}"
+        vpc_id: "{{vpc_id}}"                    # Add the VPC ID
+        resource_tags: { "Name":"Tag" }         # Change the Tag
         state: present
       register: igw
