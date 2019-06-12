@@ -1,5 +1,5 @@
 ---
-- name: Create and deletes s3 bucket
+- name: Creates and deletes s3 bucket
   hosts: localhost 
   tasks:
     - name: S3 management
