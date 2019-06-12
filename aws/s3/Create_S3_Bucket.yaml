@@ -5,4 +5,4 @@
     - name: Create an s3 bucket
       aws_s3:
         bucket: "{{bucketname}}"
-        mode: "{{mode}}"
+        mode: "{{mode}}"         # get #put #delete #create  #geturl  #getstr  #delobj  #list
