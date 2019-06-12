@@ -5,6 +5,5 @@
       ec2_vpc_igw:
         vpc_id: "{{vpc_id}}"                    # Add VPC ID
         state: present
-        region: "{{region}}"
-        resource_tags: "{{resource_tags}}"
+        region: "{{region}}"                    # Add region
       register: igw
