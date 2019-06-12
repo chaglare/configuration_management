@@ -6,5 +6,5 @@
         vpc_id: "{{vpc_id}}"                    # Add VPC ID
         state: present
         region: "{{region}}"
-        resource_tags: { "Name":"{{tags}}" }
-      register: igw
+        resource_tags: "{{tags}}"
+      region: "{{region}}"
