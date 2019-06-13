@@ -11,4 +11,4 @@
         record: "{{record}}" # The full DNS record to create or delete
         type: "{{type}}" #The type of DNS record to create
         ttl: "{{ttl}}" #The TTL to give the new record  #7200
-        value: "{{IP}}" #The new value when creating a DNS record. Ip address 
+        value: "{{value}}" #The new value when creating a DNS record. Ip address 
