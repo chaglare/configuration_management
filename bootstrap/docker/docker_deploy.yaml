@@ -1,6 +1,6 @@
 ---
 - name: Installs docker on new instances
-  hosts: localhosts
+  hosts: localhost
   vars_files:
     - docker_vars
   tasks:
