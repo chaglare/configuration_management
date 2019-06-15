@@ -1,9 +1,0 @@
----
-- name: Installs PHP-Apache and Mysql
-  hosts: "{{hosts}}"
-  become: yes
-  become_method: sudo 
-  roles:
-    - geerlingguy.php
-    - geerlingguy.php-mysql
-    - geerlingguy.apache
