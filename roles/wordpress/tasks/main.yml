@@ -37,7 +37,7 @@
   become: yes
   become_method: sudo
 - name: httpd enable
-  shell: "chkconfig httpd on"
+  shell: "chkconfig httpd off"   #made off
   become: yes
   become_method: sudo
 
@@ -63,8 +63,8 @@
 - name: Start httpd
   systemd:
     name: httpd
-    state: started
-    enabled: yes
+    state: stopped  # stopped
+    enabled: no     # disabled
   become: yes
   become_method: sudo
      
