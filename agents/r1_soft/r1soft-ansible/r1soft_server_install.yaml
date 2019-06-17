@@ -7,7 +7,7 @@
   tasks:
     - name: add host to group
       add_host:
-        hostname: "{{ server_ip }}"
+        hostname: "{{ hostname }}"        # Add server_ip
         groups: r1soft-server
         ansible_user: centos               # Change the username
 
