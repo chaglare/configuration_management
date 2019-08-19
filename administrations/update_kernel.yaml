@@ -8,7 +8,7 @@
           state: latest
         become: yes
         become_method: sudo
-      - name: restart the system
-        # when: ansible_distribution == "centOS"
-        reboot: true
+      # - name: restart the system
+      #   # when: ansible_distribution == "centOS"
+      #   reboot: true
 
