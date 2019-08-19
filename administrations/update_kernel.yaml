@@ -2,15 +2,13 @@
   - hosts: web
     tasks:
       - name: update kernel to latest
-        become: yes
-        become_method: sudo
       #   when: ansible_distribution == "centOS" #and ansible_distrubution_major_version == "7""
         package:
           name: kernel
           state: latest
-        # become: yes
-        # become_method: sudo
-      - name: restart the system
-        # when: ansible_distribution == "centOS"
+        become: yes
+        become_method: sudo
+      # - name: restart the system
+      #   # when: ansible_distribution == "centOS"
         reboot: true
 
