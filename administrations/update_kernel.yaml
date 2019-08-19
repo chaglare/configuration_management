@@ -10,5 +10,5 @@
         become_method: sudo
       - name: restart the system
         # when: ansible_distribution == "centOS"
-        reboot: 
+        reboot: yes
 
