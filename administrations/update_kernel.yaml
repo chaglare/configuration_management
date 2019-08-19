@@ -1,11 +1,6 @@
 ---
   - hosts: web
     tasks:
-      - name: upgrade all packages
-        yum:
-          name: '*'
-          state: latest
-
       - name: update kernel to latest
         when: ansible_distribution == "centOS" #and ansible_distrubution_major_version == "7""
         package:
