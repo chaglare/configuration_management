@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  become: yes
+  become_user: root
+  tasks:
+    
+    - name: Find snapshots.
+      ec2_snapshot_facts:
+        region: "us-east-1"
+        filters:
+          status: completed
+          "tag:Name": ["Prod","QA","Dev"]
+      register: ec2_facts
+    - debug:
+        msg: "{{ ec2_facts | json_query('snapshots[].snapshot_id')}}"
+    - name: Snapshot copy to another region
+      ec2_snapshot_copy:
+        source_region: us-east-1
+        region: us-east-2
+        source_snapshot_id: "{{item.snapshot_id}}"  #"{{item.snapshot_id}}"
+        description: "disaster  recovery"
+        tags: "{{item.tags}}"
+      with_items: "{{ ec2_facts | json_query('snapshots[]')}}"
