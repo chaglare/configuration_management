@@ -1,0 +1,34 @@
+---
+- name: Removes user
+  hosts: test
+  become: yes
+  become_user: root
+  tasks:
+    - name: Include Users database
+      include_vars:
+        file: vars/delete_user.yaml
+        name: delete_userdb
+      tags:
+        - users_only
+
+    # setup quota
+    - name: Set user quota to zero
+      shell: setquota -u {{ item.key }} 0 0 0 0 -a
+      with_dict: "{{ delete_userdb }}"
+      tags:
+        - users_only
+
+    - name: Delete user accounts with home directory
+      user:
+        name: "{{ item.key }}"
+        comment: "{{ item.value.name }}"
+        groups: docker
+        append: yes
+        shell: /bin/bash
+        state: absent
+        remove: yes
+        force: yes
+      register: users
+      with_dict: "{{ delete_userdb }}"
+      tags:
+        - users_only

@@ -1,0 +1,6 @@
+---
+# quoata units in KiB
+user_quota_soft_default: 1048576 # 1GB
+user_quota_hard_default: 1572864 # 1.5GB
+user_quota_soft_5: 5242880 # 5GB
+user_quota_hard_6: 6291456 # 6GB

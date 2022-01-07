@@ -1,0 +1,13 @@
+---
+jwill:
+  name: John Will
+  quota_soft: "{{ user_quota_soft_default }}"
+  quota_hard: "{{ user_quota_hard_default }}"
+kjackson:
+  name: Kate Jackson
+  quota_soft: "{{ user_quota_soft_5 }}"
+  quota_hard: "{{ user_quota_hard_6 }}"
+mrobin:
+  name: Mike Robin
+  quota_soft: "{{ user_quota_soft_default }}"
+  quota_hard: "{{ user_quota_hard_default }}"

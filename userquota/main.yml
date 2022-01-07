@@ -1,0 +1,53 @@
+---
+- name: Adds user
+  hosts: test
+  become: yes
+  become_user: root
+  vars_files: vars/main.yml
+  tasks:
+    - name: Include Users database
+      include_vars:
+        file: vars/users.yaml
+        name: userdb
+      tags:
+        - users_only
+
+    - name: Create user accounts
+      user:
+        name: "{{ item.key }}"
+        comment: "{{ item.value.name }}"
+        groups: docker
+        append: yes
+        shell: /bin/bash
+        # python -c 'import crypt; print crypt.crypt("changeme", "aa")'
+        password: aaxSuH/.jTvGs
+        update_password: on_create
+      register: users
+      with_dict: "{{ userdb }}"
+      tags:
+        - users_only
+
+    # set the uers password to be expired, requiring them to entire a new password
+    - name: Require new password on first login
+      shell: chage -d 0 {{ item.name }}
+      when: item.changed == true
+      with_items: "{{ users.results }}"
+      tags:
+        - users_only
+    
+    # setup quota
+    - name: Set user quota
+      shell: setquota -u {{ item.key }} {{ item.value.quota_soft }} {{ item.value.quota_hard }} 0 0 -a
+      # shell: setquota -u {{ item.key }} 7000 8000 0 0 -a
+      with_dict: "{{ userdb }}"
+      tags:
+        - users_only
+
+    - name: allow 'docker' group to mount/umount without sudo
+      lineinfile:
+        path: /etc/sudoers
+        line: "{{ item }}"
+      with_items:
+        - 'Cmnd_Alias MOUNT = /bin/mount, /bin/umount'
+        - '%docker ALL = NOPASSWD: MOUNT'
+        - '%docker ALL=NOPASSWD: /sbin/losetup'
